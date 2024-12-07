@@ -1,0 +1,117 @@
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f2f4f5;
+  margin-top: 100px;
+  padding: 20px;
+}
+
+.registerForm {
+  background: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  box-sizing: border-box;
+}
+
+.title {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333948;
+  text-align: center;
+}
+
+.inputGroup {
+  margin-bottom: 20px;
+}
+
+.inputGroup label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #333948;
+}
+
+.inputGroup input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.inputGroup input:focus {
+  border-color: #4e6c8e;
+  outline: none;
+}
+
+.registerButton {
+  width: 100%;
+  padding: 10px 15px;
+  background-color: #253754;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.registerButton:hover {
+  background-color: #1a2a3f;
+}
+
+@media (max-width: 768px) {
+  .main {
+    margin-top: 50px;
+  }
+
+  .registerForm {
+    padding: 20px;
+    max-width: 90%;
+  }
+
+  .title {
+    font-size: 20px;
+  }
+
+  .inputGroup input {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .registerButton {
+    font-size: 14px;
+    padding: 8px 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .main {
+    margin-top: 30px;
+  }
+
+  .title {
+    font-size: 18px;
+  }
+
+  .inputGroup label {
+    font-size: 14px;
+  }
+
+  .inputGroup input {
+    font-size: 14px;
+    padding: 6px;
+  }
+
+  .registerButton {
+    font-size: 14px;
+    padding: 6px 10px;
+  }
+}
