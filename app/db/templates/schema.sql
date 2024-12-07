@@ -1,6 +1,19 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: localhost
+-- Generation Time: Dec 05, 2024 at 04:56 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
+
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
+
+--
+-- Database: `finance`
+--
 
 CREATE TABLE transactions (
   id int(11) NOT NULL AUTO_INCREMENT,
