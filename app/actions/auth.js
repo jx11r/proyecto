@@ -1,7 +1,9 @@
 "use server";
 
+import { redirect } from "next/navigation";
+
 import { api, request } from "@/lib/api";
-import { createSession } from "@/lib/session";
+import { createSession, deleteSession } from "@/lib/session";
 
 export async function signup(state, formData) {
   const username = formData.get("username");
@@ -18,4 +20,10 @@ export async function signup(state, formData) {
   }
 
   await createSession(username);
+  redirect("/dashboard");
+}
+
+export async function logout() {
+  deleteSession();
+  redirect("/login");
 }
