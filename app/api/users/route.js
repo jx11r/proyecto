@@ -13,9 +13,9 @@ export async function GET() {
 export async function POST(request) {
   const data = await request.json();
   const hashedPassword = await bcrypt.hash(data.password, 10);
-  const sql = "INSERT INTO users VALUES (?, ?, ?)";
-  const { username, name, _ } = data;
-  return query(sql, [username, name, hashedPassword], 201);
+  const sql = "INSERT INTO users VALUES (?, ?)";
+  const { username, _ } = data;
+  return query(sql, [username, hashedPassword], 201);
 }
 
 export async function DELETE(request) {

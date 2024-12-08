@@ -36,17 +36,6 @@ export default function Signup() {
           />
         </div>
         <div className={styles.inputGroup}>
-          <label htmlFor="name">Nombre</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className={styles.inputGroup}>
           <label htmlFor="password">Contraseña</label>
           <input
             type="password"
