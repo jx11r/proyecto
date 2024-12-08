@@ -1,6 +1,6 @@
 import styles from "./page.module.css";
 
-export default function NewTransaction() {
+export default function AddTransaction() {
   return (
     <main>
       <section className={styles["add-transaction"]}>
