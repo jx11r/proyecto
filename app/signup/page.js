@@ -3,7 +3,7 @@
 import { useState } from "react";
 import styles from "./page.module.css";
 
-export default function Register() {
+export default function Signup() {
   const [formData, setFormData] = useState({
     username: "",
     name: "",
