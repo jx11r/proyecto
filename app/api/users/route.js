@@ -2,9 +2,12 @@
 
 import bcrypt from "bcrypt";
 import { query } from "@/lib/db";
+import { withAuth } from "@/lib/auth";
 
 export async function GET() {
-  return query("SELECT * FROM users", [], 200);
+  return withAuth(async () => {
+    return query("SELECT * FROM users", [], 200);
+  });
 }
 
 export async function POST(request) {
@@ -16,7 +19,9 @@ export async function POST(request) {
 }
 
 export async function DELETE(request) {
-  const data = await request.json();
-  const sql = "DELETE FROM users WHERE username = ?";
-  return query(sql, [data.username], 204);
+  return withAuth(async () => {
+    const data = await request.json();
+    const sql = "DELETE FROM users WHERE username = ?";
+    return query(sql, [data.username], 204);
+  });
 }
