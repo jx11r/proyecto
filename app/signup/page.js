@@ -1,37 +1,30 @@
 "use client";
 
+import Form from "next/form";
+import { useActionState } from "react";
 import { useState } from "react";
+
+import { signup } from "@/actions/register";
 import styles from "./page.module.css";
 
 export default function Signup() {
-  const [formData, setFormData] = useState({
-    username: "",
-    name: "",
-    password: "",
-  });
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Datos del formulario:", formData);
-  };
+  const [state, formAction, isPending] = useActionState(signup, null);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
   return (
     <main className={styles.main}>
-      <form className={styles.registerForm} onSubmit={handleSubmit}>
+      <Form action={formAction} className={styles.registerForm}>
         <h1 className={styles.title}>Registro</h1>
+        {state?.error && <p className={styles.errorMessage}>{state.error}</p>}
         <div className={styles.inputGroup}>
-          <label htmlFor="username">Usuario</label>
+          <label htmlFor="username">Nombre de usuario</label>
           <input
             type="text"
             id="username"
             name="username"
-            value={formData.username}
-            onChange={handleChange}
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
             required
           />
         </div>
@@ -41,15 +34,19 @@ export default function Signup() {
             type="password"
             id="password"
             name="password"
-            value={formData.password}
-            onChange={handleChange}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             required
           />
         </div>
-        <button className={styles.registerButton} type="submit">
+        <button
+          disabled={isPending}
+          className={styles.registerButton}
+          type="submit"
+        >
           Registrarse
         </button>
-      </form>
+      </Form>
     </main>
   );
 }
