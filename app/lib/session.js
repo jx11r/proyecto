@@ -20,9 +20,7 @@ export async function decrypt(session) {
       algorithms: ["HS256"],
     });
     return payload;
-  } catch (error) {
-    console.error("Error: failed to verify session.");
-  }
+  } catch {}
 }
 
 export async function createSession(username) {
