@@ -25,6 +25,8 @@ export default function Login() {
             name="username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
+            autoCapitalize="off"
+            autoCorrect="off"
             required
           />
         </div>
@@ -36,6 +38,7 @@ export default function Login() {
             name="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            autoCapitalize="off"
             required
           />
         </div>

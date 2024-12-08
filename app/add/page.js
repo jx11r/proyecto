@@ -17,6 +17,7 @@ export default function AddTransaction() {
               id="description"
               name="description"
               placeholder="Ej. Pago de alquiler"
+              autoComplete="off"
               required
             />
           </div>
@@ -27,6 +28,7 @@ export default function AddTransaction() {
               id="amount"
               name="amount"
               placeholder="Ej. 500"
+              autoComplete="off"
               required
             />
           </div>

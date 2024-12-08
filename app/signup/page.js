@@ -25,6 +25,9 @@ export default function Signup() {
             name="username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
+            autoCapitalize="off"
+            autoComplete="off"
+            autoCorrect="off"
             required
           />
         </div>
@@ -36,6 +39,7 @@ export default function Signup() {
             name="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            autoCapitalize="off"
             required
           />
         </div>
