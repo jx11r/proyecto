@@ -3,7 +3,7 @@ import { cookies } from "next/headers";
 
 import { decrypt } from "./app/lib/session";
 
-const protectedRoutes = ["/", "/add", "/dashboard"];
+const protectedRoutes = ["/", "/add", "/dashboard", "/logout"];
 const publicRoutes = ["/login", "/signup"];
 
 export default async function middleware(request) {
@@ -20,10 +20,6 @@ export default async function middleware(request) {
 
   if (isPublicRoute && session) {
     return NextResponse.redirect(new URL("/dashboard", request.nextUrl));
-  }
-
-  if (request.nextUrl.pathname.startsWith("/") && session) {
-    return NextResponse.rewrite(new URL("/dashboard", request.url));
   }
 
   return NextResponse.next();

@@ -3,7 +3,7 @@
 import { redirect } from "next/navigation";
 
 import { api, request } from "@/lib/api";
-import { createSession, deleteSession } from "@/lib/session";
+import { createSession } from "@/lib/session";
 
 export async function login(state, formData) {
   const username = formData.get("username");
@@ -24,9 +24,4 @@ export async function login(state, formData) {
 
   await createSession(username);
   redirect("/dashboard");
-}
-
-export async function logout() {
-  deleteSession();
-  redirect("/login");
 }
