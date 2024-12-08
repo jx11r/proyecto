@@ -4,11 +4,11 @@ import Form from "next/form";
 import { useActionState } from "react";
 import { useState } from "react";
 
-import { signup } from "@/actions/auth";
+import { login } from "@/actions/auth";
 import styles from "./page.module.css";
 
 export default function Login() {
-  const [state, formAction, isPending] = useActionState(signup, null);
+  const [state, formAction, isPending] = useActionState(login, null);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
