@@ -16,11 +16,7 @@ export default function Login() {
     <main className={styles.main}>
       <Form action={formAction} className={styles.loginForm}>
         <h2 className={styles.title}>Iniciar Sesión</h2>
-        {state?.error && (
-          <p className={styles.errorMessage}>
-            El usuario o la contraseña son incorrectos.
-          </p>
-        )}
+        {state?.error && <p className={styles.errorMessage}>{state.error}</p>}
         <div className={styles.inputGroup}>
           <label htmlFor="username">Usuario</label>
           <input

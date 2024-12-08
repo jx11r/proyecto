@@ -60,11 +60,16 @@
   font-weight: 600;
   color: #fff;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.1s ease;
 }
 
 .registerButton:hover {
   background-color: #1a2a3f;
+}
+
+.registerButton:active {
+  transform: scale(0.95);
+  background-color: #1d2b42;
 }
 
 @media (max-width: 768px) {

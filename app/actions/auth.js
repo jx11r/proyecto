@@ -13,9 +13,12 @@ export async function login(state, formData) {
     password,
   });
 
-  if (response.status != 204) {
+  if (!response.ok) {
     return {
-      error: true,
+      error:
+        response.status == 400
+          ? "El usuario no existe."
+          : "La contraseña es incorrecta.",
     };
   }
 

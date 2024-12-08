@@ -8,12 +8,13 @@ export async function POST(request) {
   const sql = "SELECT password FROM users WHERE username = ?";
   const content = await query(sql, [data.username]);
 
-  if (
-    content.length > 0 &&
-    bcrypt.compareSync(data.password, content[0].password)
-  ) {
-    return new Response(null, { status: 204 });
+  if (content.length === 0) {
+    return new Response(null, { status: 400 });
   }
 
-  return new Response(null, { status: 401 });
+  if (!bcrypt.compareSync(data.password, content[0].password)) {
+    return new Response(null, { status: 401 });
+  }
+
+  return new Response(null, { status: 204 });
 }
