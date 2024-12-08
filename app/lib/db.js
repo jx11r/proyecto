@@ -10,11 +10,20 @@ const pool = mysql.createPool({
   queueLimit: 0,
 });
 
-export async function query(sql, params = [], status = 200) {
+export async function query(sql, params, status = null) {
   try {
     const [content] = await pool.execute(sql, params);
-    return Response.json({ content }, { status });
+    if (status) {
+      if (status == 200) {
+        return Response.json({ content }, { status });
+      }
+      return new Response(null, { status });
+    }
+    return content;
   } catch (error) {
-    return Response.json({ error }, { status: 400 });
+    console.error(error);
+    if (status) {
+      return new Response(null, { status: 500 });
+    }
   }
 }

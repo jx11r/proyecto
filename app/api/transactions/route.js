@@ -3,7 +3,7 @@
 import { query } from "@/lib/db";
 
 export async function GET() {
-  return query("SELECT * FROM transactions");
+  return query("SELECT * FROM transactions", [], 200);
 }
 
 export async function POST(request) {
@@ -16,5 +16,5 @@ export async function POST(request) {
 export async function DELETE(request) {
   const data = await request.json();
   const sql = "DELETE FROM transactions WHERE id = ?";
-  return query(sql, [data.id]);
+  return query(sql, [data.id], 204);
 }

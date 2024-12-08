@@ -24,6 +24,13 @@
   text-align: center;
 }
 
+.errorMessage {
+  color: #eb5162;
+  font-size: 14px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
 .inputGroup {
   margin-bottom: 20px;
 }
