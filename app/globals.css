@@ -59,6 +59,7 @@ header nav ul li a::after {
   background-color: rgba(255, 255, 255, 0.6);
 }
 
+header nav ul li a:focus::after,
 header nav ul li a:hover::after,
 header nav ul li a.clicked::after {
   width: 100%;
