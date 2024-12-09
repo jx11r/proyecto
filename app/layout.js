@@ -15,7 +15,10 @@ export default async function RootLayout({ children }) {
       <body>
         <header>
           <div className="logo">
-            <h1>Mis Finanzas</h1>
+            <h1>
+              Mis Finanzas{session.isAuth ? ": " : ""}
+              {session.isAuth && <span>{session.username}</span>}
+            </h1>
           </div>
           {session.isAuth ? <UserNav /> : <LoginNav />}
         </header>

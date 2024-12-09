@@ -34,6 +34,12 @@ header .logo h1 {
   font-weight: 400;
 }
 
+header .logo span {
+  margin-left: 5px;
+  font-size: 20px;
+  color: #d0d3d8;
+}
+
 header nav ul {
   list-style: none;
   display: flex;
