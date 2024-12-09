@@ -195,8 +195,8 @@ export default function Dashboard() {
       <section className={styles.dashboard}>
         <h2>Resumen de Finanzas</h2>
         <div className={styles.cards}>
-          <SummaryCard title="Ingresos" amount={`$${summary.ingresos}`} />
-          <SummaryCard title="Gastos" amount={`$${summary.gastos}`} />
+          <SummaryCard title="Ingresos" amount={`\$${summary.ingresos}`} />
+          <SummaryCard title="Gastos" amount={`\$${summary.gastos}`} />
           <SummaryCard
             title="Balance"
             amount={`${summary.balance < 0 ? "-" : ""}\$${Math.abs(
