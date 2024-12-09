@@ -10,3 +10,9 @@ export async function POST(request) {
   const { username, _ } = data;
   return query(sql, [username, hashedPassword], 201);
 }
+
+export async function DELETE(request) {
+  const data = await request.json();
+  const sql = "DELETE FROM users WHERE username = ?";
+  return query(sql, [data.username], 204);
+}

@@ -57,6 +57,9 @@ function UserNav() {
           <Link href="/add">Agregar</Link>
         </li>
         <li>
+          <Link href="/account">Cuenta</Link>
+        </li>
+        <li>
           <a href="/logout">Salir</a>
         </li>
       </ul>
