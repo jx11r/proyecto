@@ -137,6 +137,12 @@
   opacity: 0.8;
 }
 
+.noData {
+  font-size: 18px;
+  text-align: center;
+  padding: 30px;
+}
+
 @media (max-width: 768px) {
   .dashboard {
     padding: 20px;

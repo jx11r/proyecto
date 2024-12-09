@@ -4,8 +4,12 @@ import { query } from "@/lib/db";
 import { verifySession, withAuth } from "@/lib/dal";
 
 export async function GET() {
-  return withAuth(async () => {
-    return query("SELECT * FROM transactions", [], 200);
+  return withAuth(async (session) => {
+    return query(
+      "SELECT * FROM transactions WHERE username = ?",
+      [session.username],
+      200
+    );
   });
 }
 

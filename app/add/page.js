@@ -42,8 +42,8 @@ export default function AddTransaction() {
           <div className={styles["form-group"]}>
             <label htmlFor="category">Categoría</label>
             <select id="category" name="category" required>
-              <option value="ingresos">Ingresos</option>
-              <option value="gastos">Gastos</option>
+              <option value="Ingresos">Ingresos</option>
+              <option value="Gastos">Gastos</option>
             </select>
           </div>
           <div className={styles["form-actions"]}>
