@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 
-import { api, get } from "@/lib/api";
+import { api, get, request } from "@/lib/api";
 import styles from "./page.module.css";
 
 const SummaryCard = ({ title, amount }) => {
@@ -15,7 +15,7 @@ const SummaryCard = ({ title, amount }) => {
   );
 };
 
-const TransactionTable = ({ filteredData, formatDate }) => {
+const TransactionTable = ({ filteredData, formatDate, onDelete }) => {
   return (
     <div className={styles.tableWrapper}>
       <table>
@@ -46,7 +46,10 @@ const TransactionTable = ({ filteredData, formatDate }) => {
                 </td>
                 <td>{transaction.category}</td>
                 <td>
-                  <button className={styles.deleteButton}>
+                  <button
+                    className={styles.deleteButton}
+                    onClick={() => onDelete(transaction.id)}
+                  >
                     <Image
                       aria-hidden
                       src="/icons/trash-can.svg"
@@ -172,6 +175,16 @@ export default function Dashboard() {
     setSelectedMonth(event.target.value);
   };
 
+  const handleDelete = async (id) => {
+    const response = await request(api.transactions, "DELETE", { id });
+    if (response && response.ok) {
+      const updatedData = data.filter((transaction) => transaction.id !== id);
+      setData(updatedData);
+      setFilteredData(updatedData);
+      calculateSummary(updatedData);
+    }
+  };
+
   const formatDate = (dateString) => {
     const date = new Date(dateString);
     return date.toLocaleDateString("es-ES");
@@ -199,7 +212,11 @@ export default function Dashboard() {
           selectedMonth={selectedMonth}
           onMonthChange={handleMonthChange}
         />
-        <TransactionTable filteredData={filteredData} formatDate={formatDate} />
+        <TransactionTable
+          filteredData={filteredData}
+          formatDate={formatDate}
+          onDelete={handleDelete}
+        />
         {!data || data.length == 0 ? (
           <p className={styles.noData}>
             Aún no se han registrado transacciones.
