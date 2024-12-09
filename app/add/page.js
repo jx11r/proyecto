@@ -1,11 +1,19 @@
+"use client";
+
+import Form from "next/form";
+import { useActionState } from "react";
+
+import { add } from "@/actions/form";
 import styles from "./page.module.css";
 
 export default function AddTransaction() {
+  const [state, formAction, isPending] = useActionState(add, null);
   return (
     <main>
       <section className={styles["add-transaction"]}>
         <h2>Nueva Transacción</h2>
-        <form className={styles["transaction-form"]}>
+        {state?.error && <p className={styles.errorMessage}>{state.error}</p>}
+        <Form action={formAction} className={styles["transaction-form"]}>
           <div className={styles["form-group"]}>
             <label htmlFor="date">Fecha</label>
             <input type="date" id="date" name="date" required />
@@ -16,8 +24,7 @@ export default function AddTransaction() {
               type="text"
               id="description"
               name="description"
-              placeholder="Ej. Pago de alquiler"
-              autoComplete="off"
+              placeholder="Pago de alquiler"
               required
             />
           </div>
@@ -27,7 +34,7 @@ export default function AddTransaction() {
               type="number"
               id="amount"
               name="amount"
-              placeholder="Ej. 500"
+              placeholder="500"
               autoComplete="off"
               required
             />
@@ -40,14 +47,18 @@ export default function AddTransaction() {
             </select>
           </div>
           <div className={styles["form-actions"]}>
-            <button type="submit" className={`${styles.btn} ${styles.green}`}>
+            <button
+              disabled={isPending}
+              type="submit"
+              className={`${styles.btn} ${styles.green}`}
+            >
               Añadir
             </button>
             <button type="reset" className={`${styles.btn} ${styles.red}`}>
               Cancelar
             </button>
           </div>
-        </form>
+        </Form>
       </section>
     </main>
   );

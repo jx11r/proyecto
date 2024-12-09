@@ -14,6 +14,14 @@
   color: #333948;
 }
 
+.errorMessage {
+  color: #eb5162;
+  font-size: 15px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
 .transaction-form {
   display: flex;
   flex-direction: column;

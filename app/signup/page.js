@@ -4,7 +4,7 @@ import Form from "next/form";
 import { useActionState } from "react";
 import { useState } from "react";
 
-import { signup } from "@/actions/register";
+import { signup } from "@/actions/form";
 import styles from "./page.module.css";
 
 export default function Signup() {

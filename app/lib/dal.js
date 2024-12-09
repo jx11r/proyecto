@@ -14,3 +14,11 @@ export const verifySession = cache(async () => {
     ? { isAuth: true, username: session.username }
     : { isAuth: false };
 });
+
+export async function withAuth(handler) {
+  const session = await verifySession();
+  if (!session.isAuth) {
+    return new Response(null, { status: 401 });
+  }
+  return handler(session);
+}

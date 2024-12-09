@@ -2,7 +2,7 @@
 
 import bcrypt from "bcrypt";
 import { query } from "@/lib/db";
-import { withAuth } from "@/lib/auth";
+import { withAuth } from "@/lib/dal";
 
 export async function GET() {
   return withAuth(async () => {
