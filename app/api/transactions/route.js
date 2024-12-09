@@ -1,7 +1,7 @@
 "use server";
 
 import { query } from "@/lib/db";
-import { verifySession, withAuth } from "@/lib/dal";
+import { withAuth } from "@/lib/dal";
 
 export async function GET() {
   return withAuth(async (session) => {
